@@ -50,6 +50,7 @@ app.use(
 // });
 
 app.get('/api/cheeses', (req, res) => {
+  console.log('get running');
   Cheeses
     .find()
     .then(cheeses => {
@@ -62,6 +63,7 @@ app.get('/api/cheeses', (req, res) => {
 });
 
 app.post('/api/cheeses', (req, res) => {
+  console.log('post running', req.body);
   const name = 'name';
   if (!(name in req.body)) {
     const message = 'Missing cheese name in request body';
@@ -80,7 +82,7 @@ app.post('/api/cheeses', (req, res) => {
     });
 });
 
-app.delete('/api/cheeses', (req, res) => {
+app.delete('/api/cheeses/:id', (req, res) => {
   Cheeses
     .findByIdAndRemove(req.params.id)
     .then(() => {

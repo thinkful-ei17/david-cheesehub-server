@@ -8,10 +8,7 @@ const cheeseSchema = mongoose.Schema({
 });
 
 cheeseSchema.methods.serialize = function() {
-  return {
-    id: this._id,
-    name: this.name
-  };
+  return this.name;
 };
 
 const Cheeses = mongoose.model('Cheese', cheeseSchema);
